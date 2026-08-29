@@ -132,7 +132,12 @@ void setup() {
         backends = new CommunicationBackend *[backend_count] { primary_backend };
     }
 
-    set_mode(primary_backend, new RivalsOfAether2(socd::SOCD_NEUTRAL, socd::SOCD_2IP));
+    if (is_dinput) {
+        set_mode(primary_backend, new GgstKeyboardMode());
+
+    } else {
+        set_mode(primary_backend, new RivalsOfAether2(socd::SOCD_NEUTRAL, socd::SOCD_2IP));
+    }
 }
 
 void loop() {
